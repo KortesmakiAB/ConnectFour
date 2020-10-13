@@ -91,7 +91,6 @@ function endGame(msg) {
 /** handleClick: handle click of column top to play piece */
 function handleClick(evt) {
 	// get x from ID of clicked cell
-	///////////// WHAT DOES THE + DO?
 	const x = +evt.target.id;
 
 	// get next spot in column (if none, ignore click)
@@ -112,11 +111,8 @@ function handleClick(evt) {
 	}
 
 	// check if all cells in board are filled; if so, call endGame
-	//// why not just check to see if the top row is filled? Why check all cells?
 	if (!board[0].includes(null)) {
-		return endGame(
-			'Q: What do your shoes and this game have in common? A: They are both tied.  Well...at least this game is tied!'
-		);
+		return endGame('Both your shoes and this game are tied');
 	}
 
 	// switch currPlayer 1 <-> 2
@@ -130,10 +126,16 @@ function checkForWin() {
 		//  - cells: list of four (y, x) cells
 		//  - returns true if all are legal coordinates & all match currPlayer
 
+		// destructure the nested arrays as they are passed to the callback
+		// if ALL of the y,x pairs exist on the board (are not greater or less than HEIGHT and WIDTH) AND the current y,x belongs to currPlayer, then return true.
 		return cells.every(([ y, x ]) => y >= 0 && y < HEIGHT && x >= 0 && x < WIDTH && board[y][x] === currPlayer);
 	}
 
-	// TODO: read and understand this code. Add comments to help you.
+	// call _win() 4 different ways: horz, vert, diagDR, diagDL. If any of them return true, then checkForWin() returns true.
+	// horiz stores y,x values of 4 cells to the right of the initial y,x
+	// vert stores y,x values of 4 cells above of the initial y,x
+	// diagDR stores y,x values of 4 cells diagonally down and right from the initial y,x
+	// diagDL stores y,x values of 4 cells diagonally down and left from the initial y,x
 	for (let y = 0; y < HEIGHT; y++) {
 		for (let x = 0; x < WIDTH; x++) {
 			const horiz = [ [ y, x ], [ y, x + 1 ], [ y, x + 2 ], [ y, x + 3 ] ];

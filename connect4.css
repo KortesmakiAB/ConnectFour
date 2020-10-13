@@ -24,10 +24,26 @@ h1 {
 /* pieces are div within game table cells: draw as colored circles */
 
 .piece {
+	/* position: absolute; */
+	animation-name: drop;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+	animation-iteration-count: 1;
+	animation-direction: normal;
+
 	margin: 5px;
 	width: 80%;
 	height: 80%;
 	border-radius: 50%;
+}
+
+@keyframes drop {
+	from {
+		transform: translateY(-300px);
+	}
+	to {
+		transform: translateY(0px);
+	}
 }
 
 .piece.p1 {

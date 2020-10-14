@@ -7,6 +7,7 @@
 
 const WIDTH = 7;
 const HEIGHT = 6;
+let noClicking = false;
 
 let currPlayer = 1; // active player: 1 or 2
 const board = []; // array of rows, each row is array of cells  (board[y][x])
@@ -90,6 +91,9 @@ function endGame(msg) {
 
 /** handleClick: handle click of column top to play piece */
 function handleClick(evt) {
+	// prevents further game pieces added to board after game ends
+	if (noClicking) return;
+
 	// get x from ID of clicked cell
 	const x = +evt.target.id;
 
@@ -144,6 +148,7 @@ function checkForWin() {
 			const diagDL = [ [ y, x ], [ y + 1, x - 1 ], [ y + 2, x - 2 ], [ y + 3, x - 3 ] ];
 
 			if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
+				noClicking = true;
 				return true;
 			}
 		}

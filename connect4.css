@@ -63,3 +63,23 @@ h1 {
 #column-top td:hover {
 	background-color: yellow;
 }
+
+#reset-div {
+	text-align: center;
+}
+
+#reset-button {
+	border: none;
+	background-color: white;
+	margin: 25px;
+	font-size: 2em;
+	color: black;
+	font-family: 'Luckiest Guy', cursive;
+	-webkit-text-fill-color: yellow; /* Will override color (regardless of order) */
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
+}
+
+#reset-button:focus{
+	outline: none;
+}

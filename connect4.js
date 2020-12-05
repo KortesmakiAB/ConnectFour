@@ -155,5 +155,22 @@ function checkForWin() {
 	}
 }
 
+// const resetButton = document.getElementById('reset-button');
+// resetButton.addEventListener('click', function() {
+// 	removeFromTable();
+// 	noClicking = false;
+// 	currPlayer = 1;
+
+// 	makeBoard();
+// 	makeHtmlBoard();
+// });
+
+// function removeFromTable(){
+// 	const table = document.querySelectorAll('#board > tr');
+// 	for (let tr of table){
+// 		tr.remove();
+// 	}
+// }
+
 makeBoard();
 makeHtmlBoard();
